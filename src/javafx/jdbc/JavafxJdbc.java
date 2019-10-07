@@ -16,15 +16,19 @@ import javafx.stage.Stage;
  * @author yuri.miyazaki
  */
 public class JavafxJdbc extends Application {
-    
+
     @Override
-    public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-        
-        Scene scene = new Scene(root);
-        
-        stage.setScene(scene);
-        stage.show();
+    public void start(Stage primaryStage) throws Exception {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/MainView.fxml"));
+            Parent parent = loader.load();
+            Scene mainScene = new Scene(parent);
+            primaryStage.setScene(mainScene);
+            primaryStage.setTitle("Sample JavaFX application");
+            primaryStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -33,5 +37,5 @@ public class JavafxJdbc extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }
