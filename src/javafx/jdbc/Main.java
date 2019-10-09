@@ -15,26 +15,34 @@ import javafx.stage.Stage;
  *
  * @author yuri.miyazaki
  */
-public class JavafxJdbc extends Application {
+public class Main extends Application {
+
+    private static Scene mainScene;
+
+    public static Scene getMainScene() {
+        return mainScene;
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/MainView.fxml"));
             ScrollPane scrollPane = loader.load();
-            
+
             scrollPane.setFitToHeight(true);
             scrollPane.setFitToWidth(true);
-            
-            Scene mainScene = new Scene(scrollPane);
-            primaryStage.setScene(mainScene);
+
+            this.mainScene = new Scene(scrollPane);
+            primaryStage.setScene(this.mainScene);
             primaryStage.setTitle("Sample JavaFX application");
             primaryStage.show();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
+    
+    
+    
     /**
      * @param args the command line arguments
      */
