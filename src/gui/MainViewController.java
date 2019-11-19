@@ -20,6 +20,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
+import model.services.DepartmentService;
 
 /**
  *
@@ -67,9 +68,17 @@ public class MainViewController implements Initializable {
             mainVbox.getChildren().clear();
             mainVbox.getChildren().add(mainMenu);
             mainVbox.getChildren().addAll(newVBox.getChildren());
+
+            testeCarregandoListView(loader.getController());
         } catch (IOException e) {
             Alerts.showAlert("IO Exception", "error load view", e.getMessage(), Alert.AlertType.ERROR);
         }
+    }
+
+    private void testeCarregandoListView(DepartmentListController departmentListController) {
+        DepartmentListController controller = departmentListController;
+        controller.setService(new DepartmentService());
+        controller.updateTableView();
     }
 
 }
